@@ -5,12 +5,13 @@ function ghost(isDeactivated) {
 }
 
 window.addEventListener('load', function() {
-  // Initialize the option controls.
-  options.frequency.value = localStorage.frequency;
- // The display frequency, in minutes.
+    // Initialize the option controls.
+    options.frequency.value = localStorage.frequency;
+    options.reminder.value = localStorage.reminder;
 
-  options.frequency.onchange = function() {
-    localStorage.frequency = options.frequency.value;
-  };
+    options.remindme.onclick = function() {
+	localStorage.frequency = options.frequency.value;
+	localStorage.reminder = options.reminder.value;
+    };
 });
 
