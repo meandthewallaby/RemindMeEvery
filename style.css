@@ -17,3 +17,6 @@ h2 {
   font-size: 100%
 }
 
+input.textbox {
+    width: 300px;
+}
