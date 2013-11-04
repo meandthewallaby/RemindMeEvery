@@ -3,6 +3,7 @@
   <head>
     <title>Remind Me Every...</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="jquery-2.0.3.js"></script>
     <script src="options.js"></script>
   </head>
   <body>
@@ -12,24 +13,8 @@
     </h1>
     <h2>Options</h2>
     <form id="options">
-      Remind me every
-      <select name="frequency">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>10</option>
-        <option>15</option>
-        <option>20</option>
-        <option>25</option>
-        <option>30</option>
-	<option>60</option>
-      </select>
-      minute(s) to
-	<input type="text" name="reminder" class="textbox" />
-	<br /><br />
-	<input type="button" name="remindme" value="Save Options" />
+	<div id="reminders"></div>
+	<input type="button" name="remindme" id="remindme" value="Save Options" />
     </form>
   </body>
 </html>
