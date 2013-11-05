@@ -1,7 +1,7 @@
 {
     "name": "Remind Me Every...",
     "version": "0.3",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "description": "Periodically remind yourself to get to work",
     "homepage_url": "https://github.com/meandthewallaby/RemindMeEvery",
     "icons": {
