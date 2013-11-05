@@ -5,21 +5,35 @@ $(document).ready(function() {
 	saveReminders();
     });
 
+    $("#add").click(function() {
+	addReminder(1, "get off Chrome and back to work!");
+    });
+
+    $(document).on("click", "input.delete", function() {
+	$(this).parent("div.reminder").remove();
+    });
+
     function loadReminders() {
 	var reminders = JSON.parse(localStorage.reminders);
 	for(var i = 0; i < reminders.length; i++) {
-	    var div = $("<div>").addClass("reminder");
-	    div.append($("<span>").text("Remind me every"));
-	    div.append(getDropdown());
-	    div.append($("<span>").text("minute(s) to"));
-	    div.append($("<input>").attr("type", "text")
-		.attr("name", "reminder").addClass("textbox"));
-
-	    div.children("select").val(reminders[i].frequency);
-	    div.children("input.textbox").val(reminders[i].text);
-
-	    $("#reminders").append(div);
+	    addReminder(reminders[i].frequency, reminders[i].text);
 	}
+    }
+
+    function addReminder(frequency, text) {
+	var div = $("<div>").addClass("reminder");
+	div.append($("<span>").text("Remind me every "));
+	div.append(getDropdown());
+	div.append($("<span>").text(" minute(s) to "));
+	div.append($("<input>").attr("type", "text")
+	    .attr("name", "reminder").addClass("textbox"));
+	div.append($("<input>").attr("type", "button")
+	    .addClass("delete").val("Remove"));
+
+	div.children("select").val(frequency);
+	div.children("input.textbox").val(text);	    
+
+	$("#reminders").append(div);
     }
 
     function saveReminders() {
