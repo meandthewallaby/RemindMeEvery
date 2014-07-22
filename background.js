@@ -6,13 +6,17 @@ function showPopup(reminderText) {
     hours = (hours % 12 == 0) ? 12 : (hours % 12);
     var minutes = (numMinutes < 10 ? "0" : "") + numMinutes
     var title = hours + ":" + minutes + " " + ampm;
-    var notification = window.webkitNotifications.createNotification(
-	'icon48.png',
-	title,
-	'Time to ' + reminderText
-    );
 
-    notification.show();
+    if(!window.webkitNotifications){
+        new Notification(title, {body: 'Time to ' + reminderText, icon: "icon48.png"});
+    } else {
+        var notification = window.webkitNotifications.createNotification(
+    	'icon48.png',
+    	title,
+    	'Time to ' + reminderText
+        );
+        notification.show();
+    }
 }
 
 function showPopups() {
@@ -39,7 +43,7 @@ function clearPopups() {
 }
 
 function togglePopups() {
-    if(!window.webkitNotifications) {
+    if(!window.webkitNotifications && !Notification) {
 	alert("Notifications are not supported!");
 	clearPopups();
     } else {
